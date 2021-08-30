@@ -61,9 +61,8 @@
                         </span>
                     </div>
                 </div>
-                
             </div>
-            <div class="row ">
+            <div class="row">
                 <div class="col-lg-3"></div>
                 <div class="col-lg-9 carousel carousel-dark slide alinharV" id="trailers" data-bs-ride="carousel" data-bs-interval="false" style="margin-top:20px">
                     <div class="trailerSlider carousel-inner" style=" padding-bottom: 50px">
@@ -80,7 +79,7 @@
                                 </span>
                             </div>        
                         </div>
-                        {%for album in infoalbum%}
+                        {%for album in infoalbum.idAlbum%}
                             <div class="carousel-item">
                                 <div style='background-image: url({{infoalbum.logo[loop.index]}});background-repeat: no-repeat, repeat;'>
                                     <span class="letraBranca">{{infoalbum.nomeAlbum[loop.index]}}</span>
@@ -98,10 +97,14 @@
                         {% endfor %}
                     </div>
                     <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#trailers" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 0"></button>
-    
-                        {%for album in infoalbum%}
-                            <button type="button" data-bs-target="#trailers" data-bs-slide-to="{{loop.index}}" aria-label="Slide {{loop.index}}"></button>
+                        
+                        {%for album in infoalbum.idAlbum%}
+                            {%if loop.first%}
+                                <button type="button" data-bs-target="#trailers" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 0"></button>
+                            {%else%}
+                                <button type="button" data-bs-target="#trailers" data-bs-slide-to="{{loop.index0}}" aria-label="Slide {{loop.index0}}"></button>
+                            {%endif%}
+                                
                         {% endfor %}
                     </div>
                 </div>
