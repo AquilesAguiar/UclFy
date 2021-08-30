@@ -19,6 +19,7 @@ def pesqArtista():
         artista = artistas(artistaPesq)
         # Id do artista
         id = artista.retornaId()
+        
         # Retornando json com informações dos artistas
         bandaInfo = artista.retonarArtista()
         #----------------------------------------------------------------------------------
@@ -26,6 +27,7 @@ def pesqArtista():
         # Instanciando classe de musica passando o id do artista
         musicasInf = musicas(id)
         infoalbum = musicasInf.albumInf()
+        musicasAlbum = musicasInf.musicaAlbumInf()
         return render_template('index.html')
     except Exception as e:
         print(str(e))

@@ -1,3 +1,4 @@
+import json
 import requests
 class musicas():
     def __init__(self,id):
@@ -34,3 +35,26 @@ class musicas():
                 self.jsonAlbum['descricao'].append('')
             self.jsonAlbum['logo'].append(albuns['strAlbumThumb'])
         return self.jsonAlbum
+
+    def musicaAlbumInf(self):
+        jsonMusica = dict()
+        idAlbum = self.albumInf()
+        for id in idAlbum['idAlbum']:
+            musicasA = requests.get('https://theaudiodb.com/api/v1/json/1/track.php?m={0}'.format(id)).json()
+            musicasA = musicasA['track']
+            for inf in musicasA:
+                if id in jsonMusica:
+                    jsonMusica[id].append({
+                        'idMusica':inf['strTrack'],
+                        'duracao':inf['intDuration'],
+                        'numeroMusica':inf['intTrackNumber'],
+                        'logo':inf['strMusicVidScreen1']
+                    })
+                else:
+                    jsonMusica[id] = [{
+                        'idMusica':inf['strTrack'],
+                        'duracao':inf['intDuration'],
+                        'numeroMusica':inf['intTrackNumber'],
+                        'logo':inf['strMusicVidScreen1']
+                    }]
+        return jsonMusica
