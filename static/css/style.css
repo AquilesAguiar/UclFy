@@ -1,0 +1,14 @@
+*{
+    margin:0px;
+    padding: 0px;
+}
+
+.alinharV{
+    display: flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.margin-Top20{
+    margin-top: 20px;
+}
