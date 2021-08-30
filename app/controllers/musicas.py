@@ -8,21 +8,12 @@ class musicas():
         albumInfo = self.album['album']
         self.jsonAlbum = {
             'idAlbum':[],
-            'idArtista':0,
             'nomeAlbum':[],
-            'nomeArtista':'',
             'anoLacamento':[],
-            'estilo':'',
-            'genero':'',
             'gravadora':[],
             'descricao':[],
             'logo':[]
         }
-        self.jsonAlbum['idArtista'] = albumInfo[0]['idArtist']
-        self.jsonAlbum['nomeArtista'] = albumInfo[0]['strArtist']
-        self.jsonAlbum['estilo'] = albumInfo[0]['strStyle']
-        self.jsonAlbum['genero'] = albumInfo[0]['strGenre']
-
        
         for albuns in albumInfo:
             self.jsonAlbum['idAlbum'].append(albuns['idAlbum'])

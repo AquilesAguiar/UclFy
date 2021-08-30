@@ -11,50 +11,42 @@
 </head>
     <body>
         <div class="container-fluid">
-
             <div class="row" style="background-color:black">
                 <div class="col-md-1" ></div>
                 <div class="col-md-7">
                    <h1 style="color:white">Ucl<span style="color:green">Fy</span></h1>
                 </div>
-                <div class="col-md-3 alinharV">
-                    <form action="/" class="" method="post">
-                        <label for="pesq" style="color:white">Pesquisar:</label>
-                        <input type="text" name="pesq">
-                    </form>
-                </div>
-                <div class="col-md-1"></div>
             </div>
-
-            <div class="row ">
-                <div class="col-lg-12 carousel carousel-dark slide" id="trailers" data-bs-ride="carousel" data-bs-interval="false" style="margin-top:20px">
-                    
-                    <div class="trailerSlider carousel-inner" style=" padding-bottom: 50px">
-
-                        <div class="carousel-item active">
-                            
-                        </div>
-                
-                        <div class="carousel-item">
-    
-                        </div>
-                        
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="alert alert-warning" role="alert">
+                        <ul class=flashes>
+                        {% for message in messages %}
+                        <li>{{ message }}</li>
+                        {% endfor %}
+                        </ul>
                     </div>
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#trailers" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#trailers" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    </div>
-                
-                </div>
+                {% endif %}
+            {% endwith %}
+            
 
+            <div class="row">
+                <h4>Bem vindos ao UclFy seu site de informações de musica, escolha uma banda e faça sua pesquisa.</h4>
             </div>
-
-
+            <div class="row">
+               
+                <form action="/infoBanda" class="" method="get">
+                    <div class="form-group row alinharCentro alinharV">
+                        <label for="pesq" class="col-sm-1 col-form-label col-form-label-lg">Pesquisar</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control form-control-lg" name="pesq" id="pesq" placeholder="Banda / Artista">
+                        </div>
+                    </div>
+                </form>
+               
+            </div>
 
         </div>
-
-        
-
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>

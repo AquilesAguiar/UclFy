@@ -3,12 +3,24 @@
     padding: 0px;
 }
 
+.alinharCentro{
+    text-align:center;
+}
 .alinharV{
     display: flex;
     align-items:center;
+    align-content: center;
     justify-content:center;
+}
+
+.letraBranca{
+    color:aliceblue;
 }
 
 .margin-Top20{
     margin-top: 20px;
+}
+
+a,a:hover{
+    text-decoration: none;
 }
