@@ -28,8 +28,8 @@ def pesqArtista():
         musicasInf = musicas(id)
         infoalbum = musicasInf.albumInf()
         musicasAlbum = musicasInf.musicaAlbumInf()
-
-        return render_template('infoBanda.html',bandaInfo = bandaInfo,infoalbum = infoalbum,musicasAlbum = musicasAlbum)
+        videos = musicasInf.retornaVideos()
+        return render_template('infoBanda.html',bandaInfo = bandaInfo,infoalbum = infoalbum,musicasAlbum = musicasAlbum,videos=videos)
 
     except Exception as e:
         print(e)

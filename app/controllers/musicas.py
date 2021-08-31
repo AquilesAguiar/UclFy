@@ -3,6 +3,7 @@ import requests
 class musicas():
     def __init__(self,id):
         self.album = requests.get('https://theaudiodb.com/api/v1/json/1/album.php?i={0}'.format(id)).json()
+        self.videos = requests.get('https://theaudiodb.com/api/v1/json/1/mvid.php?i={0}'.format(id)).json() 
     
     def albumInf(self):
         albumInfo = self.album['album']
@@ -36,6 +37,7 @@ class musicas():
             for inf in musicasA:
                 if id in jsonMusica:
                     jsonMusica[id].append({
+                        'nomeAlbum':inf['strAlbum'],
                         'idMusica':inf['strTrack'],
                         'duracao':inf['intDuration'],
                         'numeroMusica':inf['intTrackNumber'],
@@ -43,9 +45,29 @@ class musicas():
                     })
                 else:
                     jsonMusica[id] = [{
+                        'nomeAlbum':inf['strAlbum'],
                         'idMusica':inf['strTrack'],
                         'duracao':inf['intDuration'],
                         'numeroMusica':inf['intTrackNumber'],
                         'logo':inf['strMusicVidScreen1']
                     }]
         return jsonMusica
+
+    def retornaVideos(self):
+        jsonVideos = dict()
+        self.videos = self.videos['mvids']
+        for vid in self.videos:
+            if vid['idAlbum'] in jsonVideos:
+                jsonVideos[vid['idAlbum']].append({
+                'nome':vid['strTrack'],
+                'logo':vid['strTrackThumb'],
+                'link':vid['strMusicVid'],
+                })
+            else:
+                jsonVideos[vid['idAlbum']] = [{
+                    'nome':vid['strTrack'],
+                    'logo':vid['strTrackThumb'],
+                    'link':vid['strMusicVid'],
+                }]
+        return jsonVideos
+            
