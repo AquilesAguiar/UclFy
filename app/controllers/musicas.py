@@ -38,7 +38,7 @@ class musicas():
                 if id in jsonMusica:
                     jsonMusica[id].append({
                         'nomeAlbum':inf['strAlbum'],
-                        'idMusica':inf['strTrack'],
+                        'nomeMusica':inf['strTrack'],
                         'duracao':inf['intDuration'],
                         'numeroMusica':inf['intTrackNumber'],
                         'logo':inf['strMusicVidScreen1']
@@ -46,7 +46,7 @@ class musicas():
                 else:
                     jsonMusica[id] = [{
                         'nomeAlbum':inf['strAlbum'],
-                        'idMusica':inf['strTrack'],
+                        'nomeMusica':inf['strTrack'],
                         'duracao':inf['intDuration'],
                         'numeroMusica':inf['intTrackNumber'],
                         'logo':inf['strMusicVidScreen1']

@@ -54,7 +54,7 @@
                                 </svg>
                             </a>
                         </span>
-    
+
                         <span>
                             <a href="{{bandaInfo.twitter}}" target="_blank">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
@@ -108,39 +108,52 @@
                              
                         {% endfor %}
                     </div>
-                    <!-- <button class="carousel-control-prev" type="button" data-bs-target="#album" data-bs-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#album" data-bs-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Next</span>
-                    </button> -->
                 </div>
             </div>
             
-            <div class="row">
-                {%for musicas in musicasAlbum%}
-                    <div class="modal fade" id="MusicaModal{{loop.index0}}" tabindex="-1" aria-labelledby="{{musicas}}Label" aria-hidden="true">
-                        <div class="modal-dialog">
+            {%for id in musicasAlbum%}
+                <div class="modal" id="MusicaModal{{loop.index0}}" tabindex="-1" aria-labelledby="{{id}}Label" aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
                         <div class="modal-content">
                             <div class="modal-header">
-                            <h5 class="modal-title" id="{{musicas}}Label">Musicas</h5>
+                            <h5 class="modal-title" id="{{id}}Label">{{musicasAlbum[id][0].nomeAlbum}}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                {{musicasAlbum[musicas]}}
-                                
+
+                                <div class="container-fluid">
+                                    {%for cont in musicasAlbum[id]%}
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <img src="{{cont.logo}}" width="120px" height="74px" alt="Sem imagem">
+                                            </div>
+                                            <div class="col-md-2">{{cont.nomeMusica}}</div>
+
+                                            {%if id in videos%}
+                                                <div class="col-md-2">
+                                                    {%for musicLink in videos[id]%}
+                                                        {%if musicLink.nome == cont.nomeMusica%}
+                                                            <a href="{{musicLink.link}}" target="_blank">Link Musica Youtube</a>
+                                                        {%endif%}
+                                                    {%endfor%}
+                                                </div>
+                                            {%endif%}
+                                        </div>
+                                        
+                                    {%endfor%}
+
+
+                                </div>
                             </div>
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">fechar</button>
                         
                             </div>
                         </div>
-                        </div>
                     </div>
-                {%endfor%}
-            </div>
+                </div>
+            {%endfor%}
+            
         </div>
         
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
